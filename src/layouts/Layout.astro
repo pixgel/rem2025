@@ -1,0 +1,81 @@
+---
+import Footer from "@/components/Footer.astro";
+import "@/styles/global.css";
+
+const { title="Radiografía del Emprendimiento en México 2025", description="Participa en la nueva edición del principal estudio especializado en emprendimiento y gestión empresarial" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta property="og:title" content={title}>
+		<meta property="og:description" content={description}>
+		<meta property="og:image" content="/images/logo-rem.webp">
+		<meta property="og:url" content="https://asem.mx">
+		<meta property="og:type" content="website">
+		<title>{title}</title>
+	</head>
+	<body class="text-white">
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+<script>
+	const getRootMargin = () => {
+		// Para pantallas menores a 768px, inicia la animación antes (más margen)
+		return window.innerWidth < 768 ? "0px 0px 20% 0px" : "0px 0px -20% 0px";
+	};
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("fadein--up");
+				}
+			});
+		},
+		{
+			rootMargin: getRootMargin(),
+		}
+	);
+
+	const elements = document.querySelectorAll(".animate");
+	elements.forEach((element) => {
+		observer.observe(element);
+	});
+
+	// Opcional: actualizar rootMargin si el usuario cambia el tamaño de la ventana
+	window.addEventListener("resize", () => {
+		observer.disconnect();
+		const newObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("fadein--up");
+					}
+				});
+			},
+			{
+				rootMargin: getRootMargin(),
+			}
+		);
+		elements.forEach((element) => {
+			newObserver.observe(element);
+		});
+	});
+</script>

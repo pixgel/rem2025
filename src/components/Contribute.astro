@@ -1,0 +1,77 @@
+---
+import ButtonSurvey from "./ButtonSurvey.astro";
+
+
+---
+<section class="px-[6%] py-12 md:py-24">
+  <div class="container min-h-[300px] flex flex-col items-center justify-center mt-12 md:mt-2 pb-24 md:pb-12">
+    <div class="rounded-4xl border-5 border-white py-12 px-4 flex flex-col items-center justify-center w-full">
+      <h2 class="text-4xl animate">Contribuirás a: </h2>
+      <ul class="contribute__list mt-2 w-full animate">
+        <li class="contribute__item">
+          <span class="inline-block">
+            <strong>Impulsar</strong> programas en beneficio de las y los emprendedores y sus empresas
+          </span>
+        </li>
+        <li class="contribute__item">
+          <span class="inline-block">
+            <strong>Conocer</strong> el estado del emprendimiento en nuestro país
+          </span>
+        </li>
+        <li class="contribute__item">
+          <span class="inline-block">
+            <strong>Destacar</strong> necesidades y expectativas de los fundadores y sus empresas
+          </span>
+        </li>
+        <li class="contribute__item">
+          <span class="inline-block">
+            <strong>Identificar</strong> los retos para emprender de las mujeres y los grupos minoritarios
+          </span>
+        </li>
+        <li class="contribute__item">
+          <span class="inline-block">
+            <strong>Publicar</strong> un informe de referencia para gobiernos, empresas e instituciones
+          </span>
+        </li>        
+      </ul>
+    </div>
+    
+    <ButtonSurvey 
+      class="mt-20"
+      text="Contesta la encuesta"
+    />
+  
+  </div>
+
+</section>
+
+
+<style>
+  ul {
+    font-size: var(--text-xl);
+    --icon-size: 1.5em;
+    --icon-color: #77b255;
+    --icon-gap: 0.3em;
+    --icon-url: url('/images/check-icon.svg');
+  }
+
+  ul li {
+    margin: 1.5rem 0;
+    padding-left: 2%;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--icon-gap);
+    &:before {
+      content: '';
+      display: flex;
+      align-items: end;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      background-image: var(--icon-url);
+      background-size: cover;
+      line-height: 0;
+      margin-top: 0.2em;
+    }
+  }
+
+</style>

@@ -1,0 +1,31 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import Hero from '@/components/Hero.astro';
+import Participate from '@/components/Participate.astro';
+import Benefits from '@/components/Benefits.astro';
+import Contribute from '@/components/Contribute.astro';
+---
+
+<Layout>
+	<Hero />
+	<Participate />
+	<Benefits />
+	<Contribute />
+</Layout>
+
+
+<style is:global>
+	main {
+		min-height: 100vh;
+		background: var(--color-secondary);
+		position: relative;
+		z-index: 1;
+	}
+
+	footer {
+		position: sticky;
+		bottom: 0;
+		left: 0;
+	}
+</style>
